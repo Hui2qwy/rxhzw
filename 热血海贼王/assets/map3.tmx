@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="12" tilewidth="46" tileheight="53">
+ <tileset firstgid="1" name="map" tilewidth="46" tileheight="53">
+  <image source="map3.jpg" width="939" height="596"/>
+ </tileset>
+ <layer name="block" width="100" height="12" opacity="0.97">
+  <data encoding="base64" compression="zlib">
+   eJzt09lWzWEAxuF9E0WZ57nMmSOEjJWZ0GAoFTJrEBHFdRhKlDpCKIWjhDJfjOce/muvtdfa38Fz+P7O3pRYLJbKGMaSRjrjGM8EJjKJyUxhKtOYzgxmMovZpIRepN4c5jKP+Swgg0wWsojFLGEpy1hOFitYySpWsyb0IvfWso5s1rOBHDayic3ksoWtbCOP7exgJ7vYzZ7Qi9zLp4BC9rKP/RzgIIc4zBGOUsQxjnOCYkoopSz0IvdOcorTnKGcCs5SSRXVnOM8F6jhIpe4zBWuci30Iveuc4Na6qingZs0covbNHGHuzRzj/u00MoDHoZe5F47z+jgOS/opIuXdNPDIx7zhKe0hW1ctu94Tx/9fGCAQT7yic+84jVv6OVt2MZl+50RRvnBT37xmz/85R9DfGGYr3wL27hsE/2/ybZN9P8m2zbR/5ts2/+GEoG5
+  </data>
+ </layer>
+ <objectgroup name="road" width="100" height="12">
+  <object x="874" y="424"/>
+  <object x="874" y="159"/>
+  <object x="1104" y="424"/>
+  <object x="1104" y="159"/>
+  <object x="1334" y="424"/>
+  <object x="1334" y="159"/>
+  <object x="1518" y="424"/>
+  <object x="1518" y="159"/>
+  <object x="1518" y="424"/>
+  <object x="1702" y="159"/>
+  <object x="1702" y="424"/>
+  <object x="1886" y="424"/>
+  <object x="1886" y="159"/>
+  <object x="2070" y="424"/>
+  <object x="2070" y="159"/>
+  <object x="2254" y="424"/>
+  <object x="2254" y="159"/>
+  <object x="2438" y="424"/>
+  <object x="2438" y="159"/>
+  <object x="2622" y="424"/>
+  <object x="2622" y="159"/>
+  <object x="2806" y="424"/>
+  <object x="2806" y="159"/>
+  <object x="2990" y="424"/>
+  <object x="2990" y="159"/>
+  <object x="3174" y="424"/>
+  <object x="3174" y="159"/>
+  <object x="3358" y="424"/>
+  <object x="3358" y="159"/>
+  <object x="3542" y="424"/>
+  <object x="3542" y="159"/>
+  <object x="3726" y="424"/>
+  <object x="3726" y="159"/>
+  <object x="3910" y="424"/>
+  <object x="3910" y="159"/>
+  <object x="4094" y="424"/>
+  <object x="4094" y="159"/>
+  <object x="4278" y="424"/>
+  <object x="4278" y="159"/>
+  <object x="4462" y="424"/>
+  <object x="4462" y="159"/>
+ </objectgroup>
+</map>
