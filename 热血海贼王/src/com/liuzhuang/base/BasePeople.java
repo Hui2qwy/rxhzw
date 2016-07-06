@@ -67,7 +67,7 @@ public class BasePeople extends Base {
 		
 	}
 
-	public void Listener(float t) {
+/*	public void Listener(float t) {
 
 		if (mapX < 10) {
 			map.stopAllActions();
@@ -83,14 +83,14 @@ public class BasePeople extends Base {
 		float x;
 		float y;
 		if (this.x > enemyPoint.x) {
-			x = this.x - random.nextInt(pointX)/*-pointX/2*/;
-			y = this.y + random.nextInt(pointY)/*-pointY/2*/;
+			x = this.x - random.nextInt(pointX)-pointX/2;
+			y = this.y + random.nextInt(pointY)-pointY/2;
 		} else {
-			x = this.x + random.nextInt(pointX)/*-pointX/2*/;
-			y = this.y + random.nextInt(pointY)/*-pointY/2*/;
+			x = this.x + random.nextInt(pointX)-pointX/2;
+			y = this.y + random.nextInt(pointY)-pointY/2;
 		}
 		return CGPoint.ccp(x, y);
-	}
+	}*/
 
 	public float getX() {
 
@@ -325,7 +325,6 @@ public class BasePeople extends Base {
 
 			moveTo = CCMoveTo.action(0.8f, CGPoint.ccp(mapX, mapY));
 			CCsequence = CCSequence.actions(moveTo,
-					CCCallFunc.action(this, "setMapPoint"),
 					CCCallFunc.action(this, "unUpDate"));
 			break;
 		case 4:
@@ -339,7 +338,6 @@ public class BasePeople extends Base {
 
 			moveTo = CCMoveTo.action(0.8f, CGPoint.ccp(mapX, mapY));
 			CCsequence = CCSequence.actions(moveTo,
-					CCCallFunc.action(this, "setMapPoint"),
 					CCCallFunc.action(this, "unUpDate"));
 			break;
 		default:
@@ -360,6 +358,8 @@ public class BasePeople extends Base {
 		map.runAction(CCsequence);
 
 	}
+	
+
 
 	public void confineMove() {
 
@@ -397,12 +397,10 @@ public class BasePeople extends Base {
 
 	}
 
-	public void setMapPoint() {
-		if (flagJ == 3) {
-			// mapX=mapX+100;
-		} else {
-			// mapX=mapX-100;
-		}
+	public void setMapPoint(float mapX, float mapY) {
+		this.mapX=mapX;
+		this.mapY=mapY;
+	
 	}
 
 	float mapX = 0;
@@ -445,9 +443,6 @@ public class BasePeople extends Base {
 
 	public int attack1() {
 
-		CGPoint point = map.convertToNodeSpace(x, y);
-		// leftAttackRect = CGRect.make(point.x, point.y, w, h);
-		// rightAttackRect = CGRect.make(point.x, point.y, w, h);
 		attack();
 
 		return 0;
@@ -455,19 +450,12 @@ public class BasePeople extends Base {
 
 	public int attack2() {
 
-		CGPoint point = map.convertToNodeSpace(x, y);
-		// leftAttackRect = CGRect.make(point.x, point.y, w, h);
-		// rightAttackRect = CGRect.make(point.x, point.y, w, h);
 		attack();
 
 		return 0;
 	}
 
 	public int attack3() {
-
-		CGPoint point = map.convertToNodeSpace(x, y);
-		// leftAttackRect = CGRect.make(point.x, point.y, w, h);
-		// rightAttackRect = CGRect.make(point.x, point.y, w, h);
 		attack();
 
 		return 0;
@@ -475,9 +463,6 @@ public class BasePeople extends Base {
 
 	public int attack4() {
 
-		CGPoint point = map.convertToNodeSpace(x, y);
-		// leftAttackRect = CGRect.make(point.x, mapY, w, h);
-		// rightAttackRect = CGRect.make(point.x, mapY, w, h);
 		attack();
 
 		return 0;
@@ -485,9 +470,6 @@ public class BasePeople extends Base {
 
 	protected void attack() {
 	
-		
-		//scheduler.resume(this);
-
 		//scheduler.resume(this);
 		sprite.setScale(2.5f);
 		map.getParent().addChild(sprite, 1);
@@ -527,9 +509,9 @@ public class BasePeople extends Base {
 		isAttack = false;
 	}
 
-	public void setIsBeat() {
+	public void setIsBeat(boolean isBeat) {
 
-		isBeat = false;
+		this.isBeat = isBeat;
 	}
 
 	public boolean getIsBeat() {
@@ -537,26 +519,5 @@ public class BasePeople extends Base {
 		return isBeat;
 	}
 
-	/*
-	 * public CGPoint randomPoint(float pointX,float pointY){ return
-	 * CGPoint.ccp(0, 0); }
-	 */
-
-	/*
-	 * protected void follow(){
-	 * 
-	 * //CGSize winSize = CCDirector.sharedDirector().getWinSize(); //CGRect
-	 * rect = CGRect.make(point.x, point.y, 1, 1); CGRect rect =
-	 * CGRect.make(winSize.width/2-50,winSize.height/2-50 ,100 ,100 ); CCFollow
-	 * follow = CCFollow.action(sprite,rect);
-	 * 
-	 * //CCFollow follow = (CCFollow) CCFollow.action(); //follow.stop();
-	 * //follow.getBoundarySet(); if(flagJ==1||flagJ==2){ //follow.stop();f //
-	 * follow.setBoundarySet(true); }else{ follow.setBoundarySet(false); } //
-	 * follow.update(2); follow.setBoundarySet(false); //follow.
-	 * map.runAction(follow); map.addChild(sprite,3);
-	 * 
-	 * }
-	 */
 
 }

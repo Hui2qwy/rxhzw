@@ -20,6 +20,9 @@ public class ChooseCloseLayer extends CCLayer{
 	private CCSprite close1;
 	private CCSprite close2;
 	private CCSprite close3;
+	private CCSprite kuangkuang1;
+	private CCSprite kuangkuang2;
+	private CCSprite kuangkuang3;
 	private CCSprite close2Lock;
 	private CCSprite close3Lock;
 	
@@ -28,13 +31,7 @@ public class ChooseCloseLayer extends CCLayer{
 	private int closeNum=1;
 	
 	private int i;
-	
-	/**
-	 * 关卡数
-	 * 人数
-	 * 是哪一个boos
-	 * 地图
-	 */
+
 	
 	public ChooseCloseLayer(int i){
 		
@@ -48,6 +45,10 @@ public class ChooseCloseLayer extends CCLayer{
 		close2 = CCSprite.sprite("menu/chooseclose/close2.jpg");
 		close3 = CCSprite.sprite("menu/chooseclose/close3.jpg");
 		
+		kuangkuang1 = CCSprite.sprite("menu/chooseclose/kuangkuang.png");
+		kuangkuang2 = CCSprite.sprite("menu/chooseclose/kuangkuang.png");
+		kuangkuang3 = CCSprite.sprite("menu/chooseclose/kuangkuang.png");
+		
 		close2Lock = CCSprite.sprite("menu/chooseclose/lock.png");
 		close3Lock = CCSprite.sprite("menu/chooseclose/lock.png");
 		
@@ -59,6 +60,9 @@ public class ChooseCloseLayer extends CCLayer{
 		close1.setPosition(160,480);
 		close2.setPosition(480,480);
 		close3.setPosition(800,480);
+		kuangkuang1.setPosition(160,480);
+		kuangkuang2.setPosition(480,480);
+		kuangkuang3.setPosition(800,480);
 		close2Lock.setPosition(480, 510);
 		close3Lock.setPosition(800, 510);
 		
@@ -70,10 +74,19 @@ public class ChooseCloseLayer extends CCLayer{
 		this.addChild(close1);
 		this.addChild(close2);
 		this.addChild(close3);
+		
+		this.addChild(kuangkuang1);
+		this.addChild(kuangkuang2);
+		this.addChild(kuangkuang3);
+		
 		this.addChild(close2Lock);
 		this.addChild(close3Lock);
 		
 	//	this.addChild(unLock);
+		
+		kuangkuang1.setVisible(true);
+		kuangkuang2.setVisible(false);
+		kuangkuang3.setVisible(false);
 		
 		close2.setOpacity(100);
 		close3.setOpacity(100);
@@ -124,6 +137,9 @@ public class ChooseCloseLayer extends CCLayer{
 		
 		if(CGRect.containsPoint(boundingClose1Box, point)){
 			Util.getMusic(R.raw.clickmusic, false);
+			kuangkuang1.setVisible(true);
+			kuangkuang2.setVisible(false);
+			kuangkuang3.setVisible(false);
 			closeNum=1;
 			
 		}
@@ -131,6 +147,9 @@ public class ChooseCloseLayer extends CCLayer{
 			if(CGRect.containsPoint(boundingClose2Box, point)){
 				/*close2.setOpacity(255);
 				close2.setVisible(false);*/
+				kuangkuang1.setVisible(false);
+				kuangkuang2.setVisible(true);
+				kuangkuang3.setVisible(false);
 				Util.getMusic(R.raw.clickmusic, false);
 				closeNum=2;
 				
@@ -140,6 +159,9 @@ public class ChooseCloseLayer extends CCLayer{
 			if(CGRect.containsPoint(boundingClose3Box, point)){
 				/*close3.setOpacity(255);
 				close3Lock.setVisible(false);*/
+				kuangkuang1.setVisible(false);
+				kuangkuang2.setVisible(false);
+				kuangkuang3.setVisible(true);
 				Util.getMusic(R.raw.clickmusic, false);
 				closeNum=3;
 			}

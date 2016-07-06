@@ -46,13 +46,7 @@ public class LuFeiPeople extends BasePeople {
 		//peopleBoundingBox = CGRect.make(point.x, point.y, 960, 480);
 		peopleBoundingBox = CGRect.make(point.x-60, point.y-90 ,120, 180);//point.x-60, point.y-90 ,120, 180
 		//peopleBoundingBox.
-		System.out.println("45666666666666666666666456" +
-					"4564555555555555555555555555555555555555" +
-					"45666666666666666666666666666666654564564" +
-					"45666666666666666666666666666666666666566");
-			System.out.println(peopleBoundingBox.size.getHeight());
-			System.out.println(peopleBoundingBox.size.getWidth());
-			
+				
 			return peopleBoundingBox;
 
 	 }

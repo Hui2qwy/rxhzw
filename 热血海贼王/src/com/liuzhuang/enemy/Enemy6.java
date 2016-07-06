@@ -90,10 +90,13 @@ public class Enemy6 extends BaseEnemy {
 	 * 
 	 * }
 	 */
+	
+	
+	
 	public void attack() {
 
-		leftAttackRect = CGRect.make(x - 70, y - 90, 50, 70);
-		rightAttackRect = CGRect.make(x + 20, y - 90, 50, 70);
+		leftAttackRect = CGRect.make(this.getSprites().getPosition().x - 70, this.getSprites().getPosition().y - 90, 50, 70);
+		rightAttackRect = CGRect.make(this.getSprites().getPosition().x + 20, this.getSprites().getPosition().y - 90, 50, 70);
 
 		sprite.removeSelf();
 		defaultFormat = "enmey/enemy6/attack/eq_gj01.png";

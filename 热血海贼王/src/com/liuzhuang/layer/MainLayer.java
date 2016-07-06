@@ -111,7 +111,7 @@ public class MainLayer extends CCLayer {
 
 	private CCParticleSystem system;
 
-	//private SoundEngine engine;
+	private SoundEngine engine;
 
 	/*
 	 * public SoundEngine getSoundEngine(){
@@ -123,9 +123,11 @@ public class MainLayer extends CCLayer {
 
 
 		this.closeNum = closeNum;
-		//engine.playSound(CCDirector.theApp, R.raw.music, true);
-		Util.startMusic(R.raw.music, true);
-		//engine = new SoundEngine();
+		
+		engine = new SoundEngine();
+		engine.playSound(CCDirector.theApp, R.raw.music, true);
+		//Util.startMusic(R.raw.music, true);
+		//
 
 		//engine.playSound(CCDirector.theApp,R.raw.commomattack, false);
 		
@@ -148,7 +150,7 @@ public class MainLayer extends CCLayer {
 			break;
 		}
 
-		CCScheduler.sharedScheduler().schedule("getX", this, 0.1f, false);
+		//CCScheduler.sharedScheduler().schedule("getX", this, 0.1f, false);
 
 		CCScheduler.sharedScheduler().schedule("unLock", this, 0.1f, false);
 
@@ -163,17 +165,7 @@ public class MainLayer extends CCLayer {
 		progress();
 		
 		/////////////////////////////
-		
-	/*	EnemyBoss1 enemy = new EnemyBoss1(map);
-		enemysList.add(enemy);
-		mapPoint = pointsList.get(++index);
-		enemy.getSprites().setPosition(mapPoint);
-
-		enemy.setX(mapPoint.x);
-		enemy.setY(mapPoint.y);
-
-		enemy.move();*/
-		
+	
 		/////////////////////
 	}
 
@@ -190,27 +182,17 @@ public class MainLayer extends CCLayer {
 	 */
 
 	// private ArrayList<CGPoint> pointList = new ArrayList<CGPoint>();
+	
 	private BaseEnemy enemyList;
 	private BaseEnemy enemyBoss;
 
-	// 可能是因为动作太快,没来的及做动作,就被移除了,被虚拟机垃圾回收器自动回收了,因为是靠enemysList集合查找的
-	// 可能是因为动作太快,没来的及做动作,就被移除了,因为是靠enemysList集合查找的
-	// 可能是因为动作太快,没来的及做动作,就被移除了,因为是靠enemysList集合查找的
-	// 可能是因为动作太快,没来的及做动作,就被移除了,因为是靠enemysList集合查找的
 	// 可能是因为动作太快,没来的及做动作,就被移除了,因为是靠enemysList集合查找的
 	public void follow(float t) {
 
 		// 就他妈是你小子了
-		// 主角的坐标点
 
 		for (int i = 0; i < enemysList.size(); i++) {// ////////pointsList.size()
-			/*
-			 * System.out.println("456dsf46asd4fasd5d6f4sa65df41d5f6asd4f56asd4fsf"
-			 * + "4sf56sdd4f56sd4f65+++++++++++++++++++" +
-			 * enemyNum+"++++++++++++++++dfgasfhsadkfhasdjfkadsfads" +
-			 * "fsfadsnfjkasfadskjfshfkladshfadsjkfhadasd" +
-			 * "sdfbsdkjghsgjklfhsklfsnkjgl");
-			 */
+		
 			CGPoint peoplePoint = map.convertToNodeSpace(people.getX(),
 					people.getY());
 			// CGPoint enemyPoint =
@@ -223,28 +205,18 @@ public class MainLayer extends CCLayer {
 					+ enemysList.get(i).getAttackPointX(peoplePoint),
 					people.getY() + enemysList.get(i).getAttackPointY());
 
-			// CGPoint peoplePoint =
 			// map.convertToNodeSpace(people.randomPoint(enemysList.get(i).getAttackPointX(),
 			// enemysList.get(i).getAttackPointY(), enemyPoint));
-
-			// System.out.print("---peoplePoint"+peoplePoint+"----enemyPoint"+enemyPoint+"-------isPeoplePoint"+isPeoplePoint+"---------------------------------");
 
 			float toDistance = CGPointUtil.distance(ToPeoplePoint, enemyPoint);
 			float distance = CGPointUtil.distance(peoplePoint, enemyPoint);
 
 			// //////////////////////////////////
 			// enemysList.get(i).makeRect(people.getX(), people.getY());
-
-			// CGRect leftRect = enemysList.get(i).getLeftRect();
-			// CGRect rightRect = enemysList.get(i).getLeftRect();
-			// System.out.print("---leftRect"+leftRect+"----rightRect"+rightRect+"----------------------------------------");
-
+			//enemyList = enemysList.get(i);
 			// if(distance<winSize.height/4){
 			if (distance < enemysList.get(i).getAttackDistance()) {
-				// if(distance<enemysList.get(i).getAttackDistance()){
-
-				// if(CGRect.containsPoint(leftRect, enemyPoint)){
-				// if(isDistance>enemysList.get(i).getAttackDistance()){
+			
 
 				if (enemysList.get(i).getFlag() == true) {
 
@@ -256,35 +228,22 @@ public class MainLayer extends CCLayer {
 					 * 
 					 * 最新注释的一个语句
 					 */
-					// if (people.getFlag() == true) {
-
-					// System.out.print("gjkgjjjjjjjjjjjjjjjjjjjjjjjjftydrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrhj");
-
-					if (num == 8) {
-						// map.stopAction(sequence);///////////此处注视了
-					}
 					if (enemysList.get(i).getFlagI() == 0) {
 						// if(people.getX()<enemysList.get(i).getX()){
 						// CGSize size = people.getBoundingBox().size;
 
-						// System.out.print("zuobian=============================================================================================左边"+size.width+"sdfsfs"+size.height);
-						// size =
-						// enemysList.get(i).getAttackLeftRect().size;
-						// System.out.print("zuobian=============================================================================================左边"+size.width+"sdfsfs"+size.height);
-
 						if (CGRect.intersects(people.getBoundingBox(),
-								enemysList.get(i).getAttackLeftRect())) {
-							// if(enemysList.get(i).getAttackDistance()<distance+200){
-							people.getBoundingBox();
+						enemysList.get(i).getAttackLeftRect())) {
+			
 							// CGRect.intersects(a, b)
-							// people.getBoundingBox().
-
 							if (people.getFlag() == true) {
+							//外面别删,随时调整.
 								people.getBeatMusic();
 								people.beat();
+								people.bruise(enemysList.get(i).getAttackPower());
 								
 							}
-							people.bruise(enemysList.get(i).getAttackPower());
+							
 							//把这个减血的东西放里面了
 							System.out.print("敌人在左边攻击到我");
 
@@ -294,37 +253,25 @@ public class MainLayer extends CCLayer {
 
 						// CGSize size = people.getBoundingBox().size;
 
-						// System.out.print("youbian=============================================================================================右边"+size.width+"sdfsfs"+size.height);
-						// size =
-						// enemysList.get(i).getAttackRightRect().size;
-						// System.out.print("youbian=============================================================================================右边"+size.width+"sdfsfs"+size.height);
-
 						if (CGRect.intersects(people.getBoundingBox(),
 								enemysList.get(i).getAttackRightRect())) {
 							// if(enemysList.get(i).getAttackDistance()<distance+200){
-							people.getBoundingBox();
-
+							//people.getBoundingBox();
+							
 							if (people.getFlag() == true) {
+							/*people.setIsBeat(true);
+							if(people.getIsBeat()==true){*/
 								people.getBeatMusic();
 								people.beat();
-							    
+							    people.bruise(enemysList.get(i).getAttackPower());
 							
 							}
-								people.bruise(enemysList.get(i).getAttackPower());
+		
 							//把这个减血的东西放里面了
 							System.out.print("敌人在右边攻击到我");
 						}
 					}
-					/**
-					 * 
-					 * 
-					 * 新加的
-					 */
-					/*
-					 * if (people.getBloodNumber() <= 0) { Util.changeLayer(new
-					 * EndLayer()); }
-					 */
-					// }
+				
 				}
 
 				// }else
@@ -337,12 +284,7 @@ public class MainLayer extends CCLayer {
 
 					// 少了一步吧peoplePoint换成point
 					// 少了一步,更新点......点
-					// CGPoint point =
-					// map.convertToNodeSpace(people.randomPoint(enemysList.get(i).getAttackPointX(),
-					// enemysList.get(i).getAttackPointY(), enemyPoint));
-
-					// enemysList.get(i).moveToPeople(point, distance,
-					// enemyPoint);
+				
 					enemysList.get(i).moveToPeople(peoplePoint, ToPeoplePoint,
 							toDistance, enemyPoint);
 
@@ -353,13 +295,10 @@ public class MainLayer extends CCLayer {
 				// enemyList.setIsVisable(false);
 				enemyList = enemysList.get(i);
 				
-				
 				//enemysList.get(i).setIsVisable(true);
 				if (people.getisAttack() == true) {
 
-					// enemysList.get(i).setFlag(true);
-					//
-
+				
 					if (people.getFlagI() == 0) {
 						if (CGRect.intersects(enemysList.get(i).getBoundingBox(),
 								people.getAttackLeftRect())) {
@@ -370,15 +309,7 @@ public class MainLayer extends CCLayer {
 
 							}
 					
-
-						/*if (CGRect.intersects(people.getBoundingBox(),
-								enemysList.get(i).getAttackLeftRect())) {
-							if (enemysList.get(i).getIsBeat() == false) {
-								enemysList.get(i).setIsVisable(true);
-								enemysList.get(i).beat(people.getAttackPower());
-							}
-
-						}*/
+						
 					} else if (people.getFlagI() == 1) {
 
 						if (CGRect.intersects(enemysList.get(i).getBoundingBox(),
@@ -406,7 +337,7 @@ public class MainLayer extends CCLayer {
 					}
 				}
 
-				// 可能是因为动作太快,没来的及做动作,就被移除了,因为是靠enemysList集合查找的,没准备虚拟机回收了
+				// 可能是因为动作太快,没来的及做动作,就被移除了,没准被虚拟机回收了
 			} else if (toDistance > winSize.height / 2) {
 
 				if (enemysList.get(i).getFlag() == true) {
@@ -418,13 +349,6 @@ public class MainLayer extends CCLayer {
 
 		}
 
-		/*
-		 * if (enemysList.get(40).getBloodNumber() <= 30) {
-		 * 
-		 * Util.changeLayer(new EndLayer());
-		 * 
-		 * }
-		 */
 
 	}
 
@@ -439,8 +363,11 @@ public class MainLayer extends CCLayer {
 			progressTimer.setPercentage(people.getBloodNumber() / 10);
 
 		} else if (people.getBloodNumber() <= 0) {
-
+			
+			engine.pauseSound();
+			Util.purgeMusic(2);
 			Util.changeLayer(new EndLayer());
+			
 			// people.setFlag(false);
 			// people.down();
 		}
@@ -457,6 +384,8 @@ public class MainLayer extends CCLayer {
 				
 				
 		}	
+		
+		//可能是这出了问题
 		if (enemyNum == 0) {
 			if(closeNum==1){
 				Util.setSharedPreferences("close2Lock", true);
@@ -464,47 +393,32 @@ public class MainLayer extends CCLayer {
 				Util.setSharedPreferences("close3Lock", true);
 			}
 			
-			Util.pauseMusic(1);
+			//Util.purgeMusic(1);
+			//Util.purgeMusic(2);
+			engine.pauseSound();
+			Util.pauseMusic(2);
 			Util.changeLayer(new WinLayer());
 			
 		}
-		if(enemyList.isBoss()){
-			if(closeNum==1){
-				Util.setSharedPreferences("close2Lock", true);
-			}else if(closeNum==2){
-				Util.setSharedPreferences("close3Lock", true);
-			}
+		else if(enemyList.isBoss()){
+			
 			if(enemyList.getBloodNumber()<=0){
-				Util.pauseMusic(1);
+				if(closeNum==1){
+					Util.setSharedPreferences("close2Lock", true);
+				}else if(closeNum==2){
+					Util.setSharedPreferences("close3Lock", true);
+				}
+				
+				//Util.purgeMusic(1);
+				//Util.purgeMusic(2);
+				engine.pauseSound();
+				Util.pauseMusic(2);
 				Util.changeLayer(new WinLayer());
 			}
 			
 			
 		}
 
-		/*
-		 * if (enemysList.size() == 0) {
-		 * 
-		 * Util.changeLayer(new EndLayer());
-		 * 
-		 * }
-		 */
-		/*
-		 * if (index == 40) { if (enemysList.get(40)==null) {
-		 * 
-		 * System.exit(0); Util.changeLayer(new EndLayer());
-		 * 
-		 * } }
-		 */
-
-		/*
-		 * else if(enemyList.getbloodNumber()<=0){ //enemyList.setFlag(flag);
-		 * enemyList.down(); enemysList.remove(enemyList); }
-		 */
-		// (enemyList.getbloodNumber());
-		// CGSize size = CGSize.make(200, 50);
-		// CGRect rect = CGRect.make(ccp(winSize.width/2, winSize.height/2),
-		// size);
 
 	}
 
@@ -661,15 +575,6 @@ public class MainLayer extends CCLayer {
 
 	}
 
-	/*
-	 * private List<CGPoint> getMapPoints(CCTMXTiledMap map,String name){
-	 * List<CGPoint> points = new ArrayList<CGPoint>(); // 解析地图 CCTMXObjectGroup
-	 * objectGroupNamed = map.objectGroupNamed(name); ArrayList<HashMap<String,
-	 * String>> objects = objectGroupNamed.objects; for (HashMap<String, String>
-	 * hashMap : objects) { int x = Integer.parseInt(hashMap.get("x")); int y =
-	 * Integer.parseInt(hashMap.get("y")); CGPoint cgPoint = CCNode.ccp(x, y);
-	 * points.add(cgPoint); } return points; }
-	 */
 
 	/*
 	 * private void moveMap(){
@@ -688,11 +593,7 @@ public class MainLayer extends CCLayer {
 	 * }
 	 */
 
-	/*
-	 * private void loadParticle() { system = CCParticleSnow.node(); 
-	 * system.setTexture(CCTextureCache.sharedTextureCache().addImage(
-	 * "801162c85f522f733d9ff4e459bdd2ce.jpg")); .addChild(system, 1); }
-	 */
+
 
 	private void loadMap(int closeNum) {
 		
@@ -794,7 +695,7 @@ public class MainLayer extends CCLayer {
 		this.addChild(head,1);
 
 		people.stand();
-		System.out.println("1");
+		
 		setIsTouchEnabled(true);
 
 	}
@@ -807,12 +708,28 @@ public class MainLayer extends CCLayer {
 	// priority)
 
 	public boolean ccTouchesEnded(MotionEvent event) {
-		CGPoint point = this.convertTouchToNodeSpace(event);
-		CGRect boundingTopBox = top.getBoundingBox();
-		CGRect boundingBottomBox = bottom.getBoundingBox();
-		CGRect boundingLeftBox = left.getBoundingBox();
-		CGRect boundingRightBox = right.getBoundingBox();
-		if (CGRect.containsPoint(boundingTopBox, point)) {
+	
+		CGPoint point = convertTouchToNodeSpace(event);
+		CGRect rect = CGRect.make(0, 0, 480, 640);
+		if(CGRect.containsPoint(rect, point)){
+		isLock = true;
+		
+		people.unUpDate();
+		people.stand();
+		
+		if(flagJ==3||flagJ==4){
+			map.stopAllActions();
+			people.setMapPoint(map.getPosition().x, map.getPosition().y);
+		}
+		
+		top.setVisible(true);
+		bottom.setVisible(true);
+		left.setVisible(true);
+		right.setVisible(true);
+		
+		}
+		
+	/*	if (CGRect.containsPoint(boundingTopBox, point)) {
 			isLock = true;
 			top.setVisible(true);
 			// ///////////////新加的
@@ -856,7 +773,7 @@ public class MainLayer extends CCLayer {
 			// CCSequence sequence =
 			// CCSequence.actions(CCCallFunc.action(this,"delayTime"),CCCallFunc.action(this,"stop"));
 			// right.runAction(sequence);
-		}
+		}*/
 
 		return super.ccTouchesEnded(event);
 	}
@@ -881,8 +798,9 @@ public class MainLayer extends CCLayer {
 		if (CGRect.containsPoint(boundingPauseBox, point)) {
 
 			this.onExit();
-
-			Util.pauseMusic(1);
+			
+			engine.pauseSound();
+			//Util.pauseMusic(1);
 			Util.getMusic(R.raw.clickmusic, false);
 			this.getParent().addChild(new PauseLayer());
 			// Util.changeLayer(new PauseLayer());
@@ -957,23 +875,11 @@ public class MainLayer extends CCLayer {
 				flagI = 0;
 				flagJ = 3;
 				people.init(flagI, flagJ);
-				if (people.getX() < 300) {
-					// moveMap();
+			
 					/* num = */people.move();
-				} else {
-					System.out.println("______这是CCTouchGegin________"
-							+ people.getX() + "__________________");
+				
 
-					/* num = */people.move();
-				}
-
-				// num = people.move();
-				// if(x>480&&x<map.getScaleX()-480){
-				// if(people.getIsBeat()==false){
-				// moveMap();
-				// }
-				// }
-				// setIsTouchEnabled(false);
+		
 
 			} else if (CGRect.containsPoint(boundingRightBox, point)) {
 
@@ -984,27 +890,11 @@ public class MainLayer extends CCLayer {
 				flagJ = 4;
 				people.init(flagI, flagJ);
 
-				if (people.getX() > 660) {
-					// moveMap();
 					/* num = */people.move();
-				} else {
-
-					/* num = */people.move();
-				}
-
-				// num = people.move();
-				// if(x>200&&x<map.getScaleX()-200){
-				// if(people.getIsBeat()==false){
-				// moveMap();
-
-				// }
-				// ////////////////////此处和上面坐了改动
-				// }
-				// setIsTouchEnabled(false);
 
 			}
+		
 		}
-
 		return super.ccTouchesBegan(event);
 
 	}
@@ -1013,28 +903,7 @@ public class MainLayer extends CCLayer {
 
 	CGSize winSize = CCDirector.sharedDirector().getWinSize();
 
-	// private float x=0;
-	// private float y=0;
-	/*
-	 * public void moveMap() { switch (flagJ) { case 1: y=y-10; break; case 2:
-	 * y=y+10; break; case 3: x=x+10;
-	 * 
-	 * break; case 4: x=x-10;
-	 * 
-	 * break; default: break; }
-	 * 
-	 * // CGPoint point = CGPoint.ccp(x, y);
-	 * 
-	 * CCMoveTo moveTo = CCMoveTo.action(0.08f,ccp(x,y));
-	 * 
-	 * //moveTo.setTag(2);
-	 * 
-	 * sequence = CCSequence.actions(moveTo,CCCallFunc.action(this, "moveMap"));
-	 * 
-	 * map.runAction(sequence);
-	 * 
-	 * } CCSequence sequence;
-	 */
+
 	public void isEnable() {
 		setIsTouchEnabled(true);
 	}
@@ -1076,8 +945,9 @@ public class MainLayer extends CCLayer {
 			if (CGRect.containsPoint(boundingGoOnBox, point)) {
 
 				MainLayer.this.onEnter();
+				engine.resumeSound();
+				//Util.resumeMusic(1);
 				Util.getMusic(R.raw.clickmusic, false);
-				Util.resumeMusic(1);
 				this.removeSelf();
 				// MainLayer.this.setIsTouchEnabled(true);
 

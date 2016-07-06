@@ -139,8 +139,6 @@ public class BaseEnemy extends Base {
 		 * 
 		 * sprite.removeSelf(); move(); }
 		 */
-		CGRect rect = sprite.getBoundingBox();
-		
 
 	}
 
@@ -268,19 +266,6 @@ public class BaseEnemy extends Base {
 				CCCallFunc.action(this, "unUpDate"),
 				CCCallFunc.action(this, "attack"));
 
-		/*
-		 * float dis;
-		 * 
-		 * 
-		 * float dx; float dy; float px=peoplePoint.x; float py=peoplePoint.y;
-		 * float ex=enemyPoint.x; float ey=enemyPoint.y;
-		 * 
-		 * if(px>ex){ px=px-ex; }else if(px<ex){ px=ex-px; }else if(py<ey){
-		 * py=ey-py; }else if(px<ex){ py=ey-py; }
-		 * 
-		 * dx=100/distance/px; dy=100/distance/py; CGPoint newpoint =
-		 * CGPoint.ccp(dx,dy); sprite.setPosition(newpoint);
-		 */
 
 		// 100/distance=dx/(px-ex);
 
@@ -314,13 +299,15 @@ public class BaseEnemy extends Base {
 			judgeDirection();
 			map.addChild(sprite, 1);
 			action = Util.getAnimate(format, num, false, 0.15F);
+			
 			y = y + 100;
-			moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x, y));
-			// y = y+100;
-			if (y > 300 || y < 50) {
+			if (y > 300) {
 				y = y - 100;
-				move();
+				
 			}
+			moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x, y));
+			
+			
 			spawn = CCSpawn.actions((CCFiniteTimeAction) action, moveTo);
 			sequence = CCSequence.actions(spawn,
 					CCCallFunc.action(this, "move"),
@@ -338,14 +325,14 @@ public class BaseEnemy extends Base {
 			judgeDirection();
 			map.addChild(sprite, 1);
 			action = Util.getAnimate(format, num, false, 0.15F);
+			
 			y = y - 100;
-			moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x, y));
-			// y=y-100;
-			if (y > 300 || y < 50) {
+			if ( y < 50) {
 				y = y + 100;
-				move();
-
+				
 			}
+			moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x, y));
+			
 			spawn = CCSpawn.actions((CCFiniteTimeAction) action, moveTo);
 			sequence = CCSequence.actions(spawn,
 					CCCallFunc.action(this, "move"),
@@ -365,10 +352,16 @@ public class BaseEnemy extends Base {
 			judgeDirection();
 			map.addChild(sprite, 1);
 			action = Util.getAnimate(format, num, false, 0.15F);
-
-			moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x - 100, y));
+			
+			x=x-100;
+			if(x<0){
+				x=x+100;
+			}
+			moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x , y));
+			
+			/*moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x - 100, y));
 			x = x - 100;
-
+*/
 			spawn = CCSpawn.actions((CCFiniteTimeAction) action, moveTo);
 			sequence = CCSequence.actions(spawn,
 					CCCallFunc.action(this, "move"),
@@ -388,9 +381,16 @@ public class BaseEnemy extends Base {
 			judgeDirection();
 			map.addChild(sprite, 1);
 			action = Util.getAnimate(format, num, false, 0.15F);
+			
+			x=x+100;
+			if(x>4600){
+				x=x-100;
+			}
+			moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x , y));
+			
 
-			moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x + 100, y));
-			x = x + 100;
+			/*moveTo = CCMoveTo.action(num * 0.15f, CGPoint.ccp(x + 100, y));
+			x = x + 100;*/
 
 			spawn = CCSpawn.actions((CCFiniteTimeAction) action, moveTo);
 			sequence = CCSequence.actions(spawn,

@@ -89,10 +89,11 @@ public class Enemy4 extends BaseEnemy {
 	 * 
 	 * }
 	 */
+	
 
 	public void attack() {
-		leftAttackRect = CGRect.make(x - 150, y - 50, 180, 50);
-		rightAttackRect = CGRect.make(x + 30, y - 90, 180, 50);
+		leftAttackRect = CGRect.make(this.getSprites().getPosition().x - 150, this.getSprites().getPosition().y - 50, 180, 50);
+		rightAttackRect = CGRect.make(this.getSprites().getPosition().x + 30, this.getSprites().getPosition().y - 90, 180, 50);
 
 		sprite.removeSelf();
 		defaultFormat = "enmey/enemy4/attack/ll4_gj01.png";

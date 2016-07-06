@@ -88,11 +88,11 @@ public class Enemy1 extends BaseEnemy {
 	 * 
 	 * }
 	 */
+	
 
+	
 	public void attack() {
-		// leftAttackRect=CGRect.make(x-160, y-110, 80, 20);
-
-		// rightAttackRect=CGRect.make(x+160, y-110, 80, 20);
+		
 		leftAttackRect = CGRect.make(this.getSprites().getPosition().x - 170,
 				this.getSprites().getPosition().y - 110, 150, 20);// x-120,
 																	// y-100,
@@ -100,9 +100,7 @@ public class Enemy1 extends BaseEnemy {
 
 		rightAttackRect = CGRect.make(this.getSprites().getPosition().x + 40,
 				this.getSprites().getPosition().y - 110, 150, 20);// x+40,,
-																	// y-100,
-																	// 80, 20
-
+			
 		sprite.removeSelf();
 		defaultFormat = "enmey/enemy1/attack/ll1_gj01.png";
 

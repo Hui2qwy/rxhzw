@@ -57,12 +57,13 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onPause() {
 		Util.pauseMusic(1);
+		Util.pauseMusic(2);
 		super.onPause();
 		ccDirector.pause();
 	}
 	@Override
 	protected void onDestroy() {
-		Util.purgeMusic(1);
+		Util.pauseMusic(1);
 		super.onDestroy();
 		ccDirector.end();
 	}

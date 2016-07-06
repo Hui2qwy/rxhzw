@@ -22,20 +22,24 @@ import org.cocos2d.types.CGSize;
 
 public class WelcomeLayer extends CCLayer{
 	
-  //SoundEngine engine;
+  SoundEngine engine;
   CCSprite sprite;
+  CCSprite sprite1;
   
   public WelcomeLayer(){
 	  
     setIsTouchEnabled(true);
-  //engine = SoundEngine.sharedEngine();
-  //engine.playSound(CCDirector.theApp, R.raw.kaichangmusic, false);
-    Util.startMusic(R.raw.kaichangmusic, false);
+    engine = SoundEngine.sharedEngine();
+  	engine.playSound(CCDirector.theApp, R.raw.kaichangmusic, false);
+    //Util.startMusic(R.raw.kaichangmusic, false);
     sprite = CCSprite.sprite("kaichang/kaichang1.png");
+    sprite1 = CCSprite.sprite("kaichang/tishi.png");
     sprite.setScale(2.0f);
     CGSize winSize = CCDirector.sharedDirector().getWinSize();
     sprite.setPosition(winSize.width/2, winSize.height/2);
-    this.addChild(this.sprite);
+    sprite1.setPosition(winSize.width/2, 100);
+    this.addChild(sprite);
+    this.addChild(sprite1,1);
     CCAction action = Util.getAnimate("kaichang/kaichang%d.png", 8, false, 2.5f);
    
     CCSequence sequence = CCSequence.actions((CCFiniteTimeAction)action,CCCallFunc.action(this, "start"));
@@ -50,9 +54,9 @@ public class WelcomeLayer extends CCLayer{
     CGRect box = sprite.getBoundingBox();
     if (CGRect.containsPoint(box,point)){
     	
-      //engine.pauseSound();
+    	engine.pauseSound();
     	Util.getMusic(R.raw.clickmusic, false);
-    	Util.pauseMusic(1);
+    	//Util.pauseMusic(1);
     	Util.changeLayer(new StartLayer());
     }
     return super.ccTouchesBegan(event);

@@ -79,10 +79,14 @@ public class Enemy5 extends BaseEnemy {
 	 * public void upDataRect(float t){ leftAttackRect=CGRect.make(x-305, y-80,
 	 * 250, 120); rightAttackRect=CGRect.make(x+305, y-80, 250, 120); }
 	 */
+	
+
+	
 
 	public void attack() {
-		leftAttackRect = CGRect.make(x - 305, y - 80, 250, 120);
-		rightAttackRect = CGRect.make(x + 55, y - 80, 250, 120);
+		leftAttackRect = CGRect.make(this.getSprites().getPosition().x - 305, this.getSprites().getPosition().y - 80, 250, 120);
+		rightAttackRect = CGRect.make(this.getSprites().getPosition().x + 55, this.getSprites().getPosition().y - 80, 250, 120);
+	
 		sprite.removeSelf();
 		defaultFormat = "enmey/enemy5/attack/xmr_gx01.png";
 

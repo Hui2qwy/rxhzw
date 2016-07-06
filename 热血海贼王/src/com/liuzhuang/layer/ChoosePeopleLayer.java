@@ -59,6 +59,7 @@ public class ChoosePeopleLayer extends CCLayer{
 		sprite2.setPosition(360,400);
 		sprite3.setPosition(600,400);
 		sprite4.setPosition(840,400);
+		
 		sprite1.setOpacity(250);
 		sprite2.setOpacity(100);
 		sprite3.setOpacity(100);
@@ -162,7 +163,7 @@ public class ChoosePeopleLayer extends CCLayer{
 				
 			}else if(CGRect.containsPoint(boundingsprite1Box, point)){
 				Util.getMusic(R.raw.clickmusic, false);
-				initS();
+				initS();//把之前选中的设置成透明
 				flag1=true;
 				sprite1.setOpacity(250);
 				

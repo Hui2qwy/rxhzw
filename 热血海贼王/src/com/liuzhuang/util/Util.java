@@ -84,15 +84,15 @@ public class Util {
 	private static SoundEngine engine = new SoundEngine();
 	private static SoundEngine engine2 = new SoundEngine();
 
-	public static void getMusic(int resId, boolean loop) {
-		engine2.playSound(CCDirector.theApp, resId, loop);
-	}
-
 	public static void startMusic(int resId, boolean loop) {
 
 		// engine = new SoundEngine();
 		engine.playSound(CCDirector.theApp, resId, loop);
-
+		
+	}
+	
+	public static void getMusic(int resId, boolean loop) {
+		engine2.playSound(CCDirector.theApp, resId, loop);
 	}
 
 	public static void pauseMusic(int id) {
@@ -149,8 +149,8 @@ public class Util {
 	
 	public static boolean getSharedPreferences(String closeLock){
 		SharedPreferences preferences = CCDirector.theApp.getSharedPreferences("lock", CCDirector.theApp.MODE_PRIVATE);
-		boolean lock = preferences.getBoolean(closeLock, false);
-		return lock;
+		boolean lockValue = preferences.getBoolean(closeLock, false);
+		return lockValue;
 		
 	}
 	

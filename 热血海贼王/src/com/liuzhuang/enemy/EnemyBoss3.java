@@ -32,7 +32,7 @@ public class EnemyBoss3 extends BaseEnemy {
 		this.map = map;
 		sprite = CCSprite.sprite("enmey/enemyboss3/walk/bj_p01.png");
 
-		head = CCSprite.sprite("bloodnumber/boss.png");
+		head = CCSprite.sprite("bloodnumber/boss3.png");
 		head.setPosition(885, 560);
 		map.getParent().addChild(head, 1);
 		map.getParent().addChild(head, 1);
@@ -41,8 +41,8 @@ public class EnemyBoss3 extends BaseEnemy {
 		pointY = 0;
 		attackDistance = Math.sqrt(pointX * pointX + pointY * pointY);
 
-		attackPower = 5;
-		bloodNumber = 100; 
+		attackPower = 10;
+		bloodNumber = 1000; 
 		// CCScheduler.sharedScheduler().schedule("upDataRect", this, 0.1f,
 		// false);
 
@@ -86,7 +86,7 @@ public class EnemyBoss3 extends BaseEnemy {
 	 * 
 	 * }
 	 */
-
+	public void makeAttackBoundingBox(float t){}
 	public void attack() {
 		
 		scheduler.resume(this);

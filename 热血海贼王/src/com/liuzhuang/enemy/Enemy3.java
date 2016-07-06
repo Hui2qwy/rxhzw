@@ -48,7 +48,8 @@ public class Enemy3 extends BaseEnemy {
 		// false);
 
 	}
-
+	
+	
 	public CGRect getBoundingBox() {
 		EnemyBoundingBox = CGRect.make(this.getSprites().getPosition().x, this
 				.getSprites().getPosition().y - 90, 120, 120);
@@ -89,12 +90,13 @@ public class Enemy3 extends BaseEnemy {
 	 * 
 	 * }
 	 */
+	
+	
 
 	public void attack() {
-		leftAttackRect = CGRect.make(x - 20, y - 90, 30, 90);
-		System.out.println(leftAttackRect.toString());
-		rightAttackRect = CGRect.make(x - 10, y - 90, 30, 90);
-		System.out.println(rightAttackRect.toString());
+		leftAttackRect = CGRect.make(this.getSprites().getPosition().x - 20, this.getSprites().getPosition().y - 90, 30, 90);
+		rightAttackRect = CGRect.make(this.getSprites().getPosition().x - 10, this.getSprites().getPosition().y - 90, 30, 90);
+	
 
 		sprite.removeSelf();
 		defaultFormat = "enmey/enemy3/attack/ll3_gj01.png";
